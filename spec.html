@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Spec</title>
+</head>
+<body>
+	<h1>Spec</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Package</th>
+				<th>Classes</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="7">com.epam.testingsystem.domain</td>
+				<td>AbstractObject</td>
+				<td>Abstract class for User, Subject, Test, Question, Option. Fields: <i>id - Integer</i></td>
+			</tr>
+			<tr>
+				<td>User</td>
+				<td>Class for representation of users. Fields: <i>nickName, password, name, role - String</i></td>
+			</tr>
+			<tr>
+				<td>Subject</td>
+				<td>Class for representation of subjects. Fields: <i>name - String</i></td>
+			</tr>
+			<tr>
+				<td>Test</td>
+				<td>Class for representation of tests. Fields: <i>name - String, subjectId - Integer</i></td>
+			</tr>
+			<tr>
+				<td>Question</td>
+				<td>Class for representation of questions. Fields: <i>questionContainer - String, testId - Integer</i></td>
+			</tr>
+			<tr>
+				<td>Option</td>
+				<td>Class for representation of options. Fields: <i>optionContent - String, correct - Boolean, questionId - Integer</i></td>
+			</tr>
+			<tr>
+				<td>UserOption</td>
+				<td>Class for representation of users' chosen options. Fields: <i>userId, optionId - Integer</i></td>
+			</tr>
+			<tr>
+				<td rowspan="7">com.epam.testingsystem.repository</td>
+				<td>AbstractRepository&lt;T extends AbstractObject&gt;</td>
+				<td>Abstract class for UserRepository, SubjectRepository, TestRepository, QuestionRepository, OptionRepository. Methods: <i>create(T object), deleteById(int id), update(T object) - void, list() - Collection&lt;T&gt;</i></td>
+			</tr>
+			<tr>
+				<td>UserRepository</td>
+				<td>Class for users' keeping. Methods: <i>create(String nickName, String password, String name) - void</i></td>
+			</tr>
+			<tr>
+				<td>SubjectRepository</td>
+				<td>Class for subjects' keeping. Methods: <i>create(String name) - void</i></td>
+			</tr>
+			<tr>
+				<td>TestRepository</td>
+				<td>Class for tests' keeping. Methods: <i>create(String name, Subject subject) - void</i></td>
+			</tr>
+			<tr>
+				<td>QuestionRepository</td>
+				<td>Class for questions' keeping. Methods: <i>create(String questionContainer, Test test) - void</i></td>
+			</tr>
+			<tr>
+				<td>OptionRepository</td>
+				<td>Class for options' keeping. Methods: <i>create(String optionContent, boolean correct, Question question) - void</i></td>
+			</tr>
+			<tr>
+				<td>UserOptionRepository</td>
+				<td>Class for keeping of users' chosen options. Methods: <i>create(User user, Option option), create(UserOption userOption) - void, allUserOptions() - UserOption[]</i></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
