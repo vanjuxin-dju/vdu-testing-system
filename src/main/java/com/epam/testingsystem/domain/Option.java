@@ -1,9 +1,49 @@
 package com.epam.testingsystem.domain;
 
-public class Option extends AbstractObject {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Users")
+public class Option {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idOption")
+	private Integer id;
+	
+	@Column(name = "option_content")
 	private String optionContent;
+	
+	@Column(name = "option_is_correct")
 	private Boolean correct;
-	private Integer questionId;
+	
+	@ManyToOne(targetEntity = Question.class, fetch = FetchType.LAZY)
+	@JoinColumn(name="idQuestion")
+	private Question question;
+
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getOptionContent() {
 		return optionContent;
@@ -19,13 +59,5 @@ public class Option extends AbstractObject {
 
 	public void setCorrect(Boolean correct) {
 		this.correct = correct;
-	}
-
-	public Integer getQuestionId() {
-		return questionId;
-	}
-
-	public void setQuestionId(Integer questionId) {
-		this.questionId = questionId;
 	}
 }
