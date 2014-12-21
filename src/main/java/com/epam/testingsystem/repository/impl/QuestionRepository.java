@@ -1,7 +1,11 @@
 package com.epam.testingsystem.repository.impl;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,9 +18,18 @@ import com.epam.testingsystem.repository.base.AbstractHibernateDao;
 @Transactional
 public class QuestionRepository extends AbstractHibernateDao<Question, Integer> implements QuestionDao {
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Question> findQuestionsByTest(Test test) {
+		Criteria qr = getSession()
+				.createCriteria(Question.class, "question")
+				.add(Restrictions.eq("test", test))
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		return qr.list();
+	}
+	
 	@Override
 	public void changeTest(Question question, Test test) {
-		// TODO Auto-generated method stub
 		final Session session = getSession();
 		session.beginTransaction();
 		Query qr = session

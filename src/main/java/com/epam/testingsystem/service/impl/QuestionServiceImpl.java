@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.testingsystem.domain.Question;
+import com.epam.testingsystem.domain.Test;
 import com.epam.testingsystem.repository.QuestionDao;
 import com.epam.testingsystem.service.QuestionService;
 
@@ -18,8 +19,8 @@ public class QuestionServiceImpl implements QuestionService {
 	private QuestionDao questionRepository;
 
 	@Override
-	public void saveQuestion(Question question) {
-		questionRepository.create(question);
+	public Integer saveQuestion(Question question) {
+		return questionRepository.create(question);
 	}
 
 	@Override
@@ -40,5 +41,10 @@ public class QuestionServiceImpl implements QuestionService {
 	@Override
 	public void updateQuestion(Question question) {
 		questionRepository.update(question);
+	}
+
+	@Override
+	public List<Question> getQuestionsByTest(Test test) {
+		return questionRepository.findQuestionsByTest(test);
 	}
 }

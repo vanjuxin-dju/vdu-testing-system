@@ -2,6 +2,7 @@ package com.epam.testingsystem.service;
 
 import java.util.List;
 
+import com.epam.testingsystem.domain.Subject;
 import com.epam.testingsystem.domain.Test;
 
 public interface TestService {
@@ -14,4 +15,6 @@ public interface TestService {
 	List<Test> getTests();
 	
 	void updateTest(Test test);
+	
+	List<Test> getTestsBySubject(Subject subject);
 }

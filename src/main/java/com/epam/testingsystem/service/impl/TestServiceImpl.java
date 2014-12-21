@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.epam.testingsystem.domain.Subject;
 import com.epam.testingsystem.domain.Test;
 import com.epam.testingsystem.repository.TestDao;
 import com.epam.testingsystem.service.TestService;
@@ -40,5 +41,10 @@ public class TestServiceImpl implements TestService {
 	@Override
 	public void updateTest(Test test) {
 		testRepository.update(test);
+	}
+
+	@Override
+	public List<Test> getTestsBySubject(Subject subject) {
+		return testRepository.findTestsBySubject(subject);
 	}
 }

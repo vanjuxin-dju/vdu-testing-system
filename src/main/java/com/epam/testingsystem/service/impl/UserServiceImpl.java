@@ -31,9 +31,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void logOutUser(Integer id) {
-		// TODO add method to logout user
-		
+	public void updateUser(User user) {
+		userRepository.update(user);
 	}
-	
 }

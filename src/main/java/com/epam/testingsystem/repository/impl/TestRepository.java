@@ -2,12 +2,13 @@ package com.epam.testingsystem.repository.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.epam.testingsystem.domain.Question;
 import com.epam.testingsystem.domain.Subject;
 import com.epam.testingsystem.domain.Test;
 import com.epam.testingsystem.repository.TestDao;
@@ -19,12 +20,13 @@ public class TestRepository extends AbstractHibernateDao<Test, Integer> implemen
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Question> findAllQuestions(Test test) {
-		Query qr = getSession()
-				.createQuery("from Question where idTest = " 
-						+ test.getId());
+	public List<Test> findTestsBySubject(Subject subject) {
+		Criteria qr = getSession()
+				.createCriteria(Test.class, "test")
+				.add(Restrictions.eq("subject", subject));
 		return qr.list();
 	}
+
 
 	@Override
 	public void changeSubject(Test test, Subject subject) {

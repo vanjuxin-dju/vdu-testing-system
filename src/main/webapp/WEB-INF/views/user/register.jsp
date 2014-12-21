@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  
-<h3>Please sign in</h3>
+<h3>Register form</h3>
 
 <c:if test="${not empty error}">
 	<div class="danger">
@@ -11,7 +11,7 @@
 	</div>
 </c:if>
 
-<form name='loginForm' action="login" method='POST' class="form-horizontal" role="form">
+<form name='loginForm' action="register" method='POST' class="form-horizontal" role="form">
 	<div class="form-group">
 		<label for="username" class="col-sm-4 control-label">User:</label>
 		<div class="col-sm-8">
@@ -26,11 +26,22 @@
 	</div>
 	
 	<div class="form-group">
+		<label for="reppassword" class="col-sm-4 control-label">Repeat password:</label>
+		<div class="col-sm-8">
+			<input type="password" id="reppassword" name="reppassword" class="form-control" placeholder="Repeat password">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="uname" class="col-sm-4 control-label">Name:</label>
+		<div class="col-sm-8">
+			<input type="text" id="uname" name="uname" class="form-control" placeholder="Enter your name">
+		</div>
+	</div>
+	
+	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
 			<input name="submit" type="submit" class="btn btn-primary" value=" Sign In " />
-		</div>
-		<div class="col-sm-offset-4 col-sm-8">
-			<a href="<c:url value="/register" />">Register</a>
 		</div>
 	</div>
 </form>

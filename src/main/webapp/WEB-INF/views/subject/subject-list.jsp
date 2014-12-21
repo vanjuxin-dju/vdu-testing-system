@@ -29,15 +29,23 @@ function subjectDelete(subjectId) {
 
 <h1>Subjects: </h1>
  
-<a href="<c:url value="/subject/new" />">New Subject</a> 
+<c:if test="${not empty user}">
+	<c:if test="${user.role == 'admin' }">
+		<a href="<c:url value="/subject/new" />">New Subject</a> 
+	</c:if>
+</c:if>
+
 
 <br/><br/>
 <table id="clientsTable" border="1" cellpadding="10" cellspacing="0" class="table table-striped table-bordered">
 	<tr>
 		<th>ID</th>
 		<th>Name</th>
-		<th>Admin</th>
-		<th></th>
+		<c:if test="${not empty user}">
+			<c:if test="${user.role == 'admin' }">
+				<th>Admin</th><th></th>
+			</c:if>
+		</c:if>
 	</tr>
 	
 	<c:forEach items="${subjects}" var="subject">
@@ -48,12 +56,18 @@ function subjectDelete(subjectId) {
 		    <td><a href="${viewSubjectUrl}">${subject.name}</a></td> 
 		    <td>${subject.admin.name}  &nbsp;  &nbsp;</td>
 		    
-		    <td>
-		    	<a href="<c:url value="/subject/edit/${subject.id}" />"> Edit </a> &nbsp;
-		   	</td>
-		   	<td>
-		    	<button type="button" onclick="subjectDelete(${subject.id})">Delete</button> 
-		   	</td>
+		    <c:if test="${not empty user}">
+				<c:if test="${user.role == 'admin' }">
+					<td>
+				    	<a href="<c:url value="/subject/edit/${subject.id}" />"> Edit </a> &nbsp;
+				   	</td>
+				   	<td>
+				    	<button type="button" onclick="subjectDelete(${subject.id})">Delete</button> 
+				   	</td>
+				</c:if>
+			</c:if>
+		    
+		    
 	   	</tr>
 	</c:forEach>
 </table>

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.epam.testingsystem.domain.User;
 import com.epam.testingsystem.service.UserService;
+import com.epam.testingsystem.web.exception.NeedAuthorizationException;
 
 @Controller
 @RequestMapping("/profile")
@@ -27,6 +28,13 @@ public class ProfileController {
 			@PathVariable String idUser,
 			@PathVariable("idUser") User user,
 			HttpSession session, Model model) {
+		Object userObject = session.getAttribute("user");
+		if ((userObject != null) && (userObject instanceof User)) {
+			User user1 = (User) userObject;
+			System.out.println("user with id = " + user1.getId());
+		} else {
+			throw new NeedAuthorizationException();
+		}
 		
 		Locale locale = LocaleContextHolder.getLocale();
 		String language = locale.getLanguage();
@@ -37,11 +45,7 @@ public class ProfileController {
 		mav.setViewName("profile");
 		mav.addObject("user", user);
 		
-		Object userObject = session.getAttribute("user");
-		if ((userObject != null) && (userObject instanceof User)) {
-			User user1 = (User) userObject;
-			System.out.println("user with id = " + user1.getId());
-		}
+		
 		return mav;
 	}
 }

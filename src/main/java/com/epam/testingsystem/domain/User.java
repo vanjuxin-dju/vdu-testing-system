@@ -40,11 +40,25 @@ public class User {
 	@Enumerated(EnumType.ORDINAL)
 	private RoleNum role;
 	
-	@ManyToMany(targetEntity = Option.class, fetch = FetchType.LAZY)
+	@ManyToMany(targetEntity = Option.class, fetch = FetchType.EAGER)
 	@JoinTable(name = "UserOption", 
 		joinColumns = { @JoinColumn(name = "idUser") },
 		inverseJoinColumns = { @JoinColumn(name = "idOption") })
 	private Set<Option> options;
+	
+	@ManyToMany(targetEntity = Test.class, fetch = FetchType.EAGER)
+	@JoinTable(name = "UserTest", 
+		joinColumns = { @JoinColumn(name = "idUser") },
+		inverseJoinColumns = { @JoinColumn(name = "idTest") })
+	private Set<Test> tests;
+
+	public Set<Test> getTests() {
+		return tests;
+	}
+
+	public void setTests(Set<Test> tests) {
+		this.tests = tests;
+	}
 
 	public Set<Option> getOptions() {
 		return options;

@@ -1,5 +1,6 @@
 package com.epam.testingsystem.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "Options")
 public class Option {
 	
 	@Id
@@ -25,7 +26,7 @@ public class Option {
 	@Column(name = "option_is_correct")
 	private Boolean correct;
 	
-	@ManyToOne(targetEntity = Question.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = Question.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="idQuestion")
 	private Question question;
 

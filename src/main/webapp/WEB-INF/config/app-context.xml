@@ -35,6 +35,7 @@
 			<list>
 				<bean class="com.epam.testingsystem.web.converters.StringToUserConverter" />
 				<bean class="com.epam.testingsystem.web.converters.StringToSubjectConverter" />
+				<bean class="com.epam.testingsystem.web.converters.StringToTestConverter" />
 			</list>
 		</property>
 	</bean>
@@ -89,6 +90,5 @@
 	<!-- Configuration Import -->
 
 	<import resource="app-data.xml" />
-	<import resource="app-security.xml" />
 
 </beans>

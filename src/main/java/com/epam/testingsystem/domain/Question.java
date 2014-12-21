@@ -2,6 +2,7 @@ package com.epam.testingsystem.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "Question")
 public class Question {
 	
 	@Id
@@ -25,11 +26,13 @@ public class Question {
 	@Column(name = "_question")
 	private String questionContainer;
 	
-	@ManyToOne(targetEntity = Test.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = Test.class, fetch = FetchType.LAZY, 
+			cascade = CascadeType.ALL)
 	@JoinColumn(name = "idTest")
 	private Test test;
 	
-	@OneToMany(targetEntity = Option.class, mappedBy = "question", fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = Option.class, mappedBy = "question",
+			fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Option> options;
 
 	public List<Option> getOptions() {

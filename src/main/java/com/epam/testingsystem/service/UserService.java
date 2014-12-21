@@ -9,5 +9,5 @@ public interface UserService {
 	
 	User getUserById(Integer id);
 	
-	void logOutUser(Integer id);
+	void updateUser(User user);
 }

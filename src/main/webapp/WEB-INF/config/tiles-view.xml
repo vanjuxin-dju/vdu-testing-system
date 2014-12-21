@@ -15,6 +15,11 @@
         <put-attribute name="body" value="/WEB-INF/views/user/login.jsp" />
     </definition>
     
+    <definition name="register" extends="base.definition">
+        <put-attribute name="title" value="Testing System - Register" />
+        <put-attribute name="body" value="/WEB-INF/views/user/register.jsp" />
+    </definition>
+    
     <definition name="profile" extends="base.definition">
         <put-attribute name="title" value="User Profile ${user.name} - no support" />
         <put-attribute name="body" value="/WEB-INF/views/user/profile.jsp" />
@@ -38,6 +43,26 @@
     <definition name="subject.details" extends="base.definition">
     	<put-attribute name="title" expression="${subjects.manager.title}"/>
         <put-attribute name="body" value="/WEB-INF/views/subject/subject-details.jsp" />
+    </definition>
+    
+    <definition name="test.details" extends="base.definition">
+    	<put-attribute name="title" expression="${tests.manager.title}"/>
+        <put-attribute name="body" value="/WEB-INF/views/test/test-details.jsp" />
+    </definition>
+    
+    <definition name="test.form" extends="base.definition">
+    	<put-attribute name="title" expression="${tests.manager.title}"/>
+        <put-attribute name="body" value="/WEB-INF/views/test/test-form.jsp" />
+    </definition>
+    
+    <definition name="test.form.edit" extends="base.definition">
+    	<put-attribute name="title" expression="${tests.manager.title}"/>
+        <put-attribute name="body" value="/WEB-INF/views/test/test-form-edit.jsp" />
+    </definition>
+    
+    <definition name="question.form" extends="base.definition">
+    	<put-attribute name="title" expression="${questions.manager.title}"/>
+        <put-attribute name="body" value="/WEB-INF/views/question/question-form.jsp" />
     </definition>
 
 </tiles-definitions>

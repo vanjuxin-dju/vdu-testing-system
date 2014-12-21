@@ -46,7 +46,7 @@ public class Test {
 		return subject;
 	}
 
-	public void setSubjectId(Subject subject) {
+	public void setSubject(Subject subject) {
 		this.subject = subject;
 	}
 }

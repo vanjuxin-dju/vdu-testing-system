@@ -4,10 +4,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
-<h1>New Subject:</h1>
+<h1>New Test:</h1>
 
-<form:form action="${action}" commandName="subject"
-	modelAttribute="subject" method="POST">
+<form:form action="${action}" commandName="test"
+	modelAttribute="test" method="POST">
 
 	<form:label path="name">Name:</form:label>
 	<form:input path="name" />
