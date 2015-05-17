@@ -1,0 +1,1 @@
+Tutor creates Test that contains some Questions (to choose one or more options from N) for definite Subject. Student can view the list of avaliable Tests and answer the Questions.
